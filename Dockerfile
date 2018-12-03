@@ -3,8 +3,8 @@ FROM node:8
 WORKDIR /home/nodejs/app
 
 COPY package.json .
-
 COPY public ./public
+COPY src ./src
 RUN ls -l
 
 RUN npm install
