@@ -1,0 +1,50 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  annotations:
+    openshift.io/generated-by: OpenShiftNewApp
+  creationTimestamp: '2018-12-03T19:48:52Z'
+  labels:
+    app: vanilla-ui
+  name: vanilla-ui
+  namespace: vanilla-docker
+  resourceVersion: '11054'
+  selfLink: >-
+    /apis/build.openshift.io/v1/namespaces/vanilla-docker/buildconfigs/vanilla-ui
+  uid: 75d34a47-f734-11e8-a2f8-4ad34acb83e4
+spec:
+  failedBuildsHistoryLimit: 5
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'vanilla-ui:latest'
+  postCommit: {}
+  resources: {}
+  runPolicy: Serial
+  source:
+    git:
+      ref: feature/docker
+      uri: 'https://github.com/undefspi/vanilla-ui.git'
+    type: Git
+  strategy:
+    dockerStrategy:
+      from:
+        kind: ImageStreamTag
+        name: 'node:8'
+    type: Docker
+  successfulBuildsHistoryLimit: 5
+  triggers:
+    - github:
+        secret: hkWQixahIGewj6RgHT3O
+      type: GitHub
+    - generic:
+        secret: MWC1Xhrn-ZGhkb2Fi2NP
+      type: Generic
+    - type: ConfigChange
+    - imageChange:
+        lastTriggeredImageID: >-
+          node@sha256:04c2d92a84de04311114a4f2a02ec082637c449b18ea67f3452ba61b26badb97
+      type: ImageChange
+status:
+  lastVersion: 9
