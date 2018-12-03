@@ -8,4 +8,4 @@ RUN npm run build
 
 RUN ls -l
 RUN npm install serve
-CMD ["serve", "s", "build"]
+CMD ["serve", "-s", "build"]
