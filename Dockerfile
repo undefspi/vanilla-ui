@@ -10,7 +10,7 @@ RUN ls -l
 RUN npm install
 RUN ls -l
 
-RUN npm build 
+RUN npm run build 
 RUN ls -l
 
 RUN npm install serve
