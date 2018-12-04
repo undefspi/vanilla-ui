@@ -1,0 +1,43 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  creationTimestamp: '2018-12-04T05:47:44Z'
+  name: image-build
+  namespace: vanilla-docker
+spec:
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'vanilla-runtime:latest'
+  postCommit: {}
+  resources: {}
+  runPolicy: Serial
+  source:
+    dockerfile: |-
+      FROM openshift/base-centos7:latest
+      COPY build /home/nodejs/app/build
+      WORKDIR /home/nodejs/app
+      RUN npm install -g serve
+      CMD ["serve", "-s", "build"]
+    images:
+      - from:
+          kind: ImageStreamTag
+          name: 'vanilla-ui:latest'
+        paths:
+          - destinationDir: .
+            sourcePath: /home/nodejs/app/build
+    type: Dockerfile
+  strategy:
+    dockerStrategy:
+      from:
+        kind: ImageStreamTag
+        name: 'node:8'
+    type: Docker
+  triggers:
+    - imageChange:
+        lastTriggeredImageID: >-
+          node@sha256:04c2d92a84de04311114a4f2a02ec082637c449b18ea67f3452ba61b26badb97
+      type: ImageChange
+status:
+  lastVersion: 8
