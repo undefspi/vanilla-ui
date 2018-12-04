@@ -1,3 +1,4 @@
+#https://docs.okd.io/latest/dev_guide/builds/advanced_build_operations.html#dev-guide-chaining-builds
 apiVersion: build.openshift.io/v1
 kind: BuildConfig
 metadata:
