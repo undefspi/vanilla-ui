@@ -1,0 +1,37 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  labels:
+    app: node-user
+  name: nose-user
+  namespace: vanilla-docker
+spec:
+  failedBuildsHistoryLimit: 5
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'node-user:latest'
+  postCommit: {}
+  resources: {}
+  runPolicy: Serial
+  source:
+    git:
+      ref: master
+      uri: 'https://github.com/undefspi/node-user.git'
+    type: Git
+  strategy:
+    dockerStrategy:
+      from:
+        kind: ImageStreamTag
+        name: 'node:8'
+    type: Docker
+  successfulBuildsHistoryLimit: 5
+  triggers:
+    - github:
+        secret: hkWQixahIGewj6RgHT3O
+      type: GitHub
+    - generic:
+        secret: MWC1Xhrn-ZGhkb2Fi2NP
+      type: Generic
+    - type: ConfigChange
