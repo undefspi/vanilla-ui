@@ -11,7 +11,7 @@ RUN npm install
 RUN ls -l
 
 RUN npm run build 
-#RUN ls -l
+RUN ls -l
 
-#RUN npm install -g serve
-#CMD ["serve", "-s", "build"]
+RUN npm install -g serve
+CMD ["serve", "-s", "build"]
