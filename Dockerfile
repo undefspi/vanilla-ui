@@ -1,16 +1,17 @@
 FROM node:8
 
 ENV APP_ROOT=/opt/app-root \
-    HOME=$APP_ROOT/src \
-    PATH=$HOME/src/bin:/opt/app-root/bin:$PATH 
-
-RUN mkdir -p $HOME
+    HOME=${APP_ROOT}/src \
+    PATH=${HOME}/bin:/opt/app-root/bin:$PATH 
 
 WORKDIR $HOME
 
+RUN ls -l ${HOME}
+RUN ls - l /opt
+
 RUN  useradd -u 1001 -r -g 0 -d ${HOME} -s /sbin/nologin \
       -c "Default Application User" default && \
-  chown -R 1001:0 ${APP_ROOT}
+  chown -R 1001:0 $APP_ROOT
 
 COPY package.json .
 COPY public ./public
