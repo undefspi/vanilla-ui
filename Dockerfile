@@ -21,7 +21,7 @@ RUN ls -l
 
 RUN  useradd -u 1001 -r -g 0 -d ${HOME} -s /sbin/nologin \
       -c "Default Application User" default && \
-  chown -R 1001:0 $APP_ROOT
+     chown -R 1001:0 ${APP_ROOT} && chmod -R ug+rwx ${APP_ROOT}
 
 RUN ls -l /opt
 RUN ls -l ${APP_ROOT}
@@ -31,3 +31,5 @@ USER 1001
 
 #RUN npm install -g serve
 CMD ["npm", "start"]
+
+RUN cat "check write" >> checkfile.txt
