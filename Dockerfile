@@ -27,7 +27,8 @@ RUN ls -l /opt
 RUN ls -l ${APP_ROOT}
 RUN ls -l ${HOME}
 
+RUN npm install serve
+
 USER 1001
 
-#RUN npm install -g serve
-CMD ["npm", "start"]
+CMD ["serve","-s","./build"]
