@@ -17,6 +17,7 @@ RUN npm install
 RUN ls -l
 
 RUN npm run build 
+RUN npm install -g serve
 RUN ls -l
 
 RUN  useradd -u 1001 -r -g 0 -d ${HOME} -s /sbin/nologin \
@@ -29,5 +30,4 @@ RUN ls -l ${HOME}
 
 
 USER 1001
-RUN npm install -g serve
 CMD ["serve","-s","build"]
