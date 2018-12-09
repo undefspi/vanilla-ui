@@ -6,8 +6,7 @@ ENV APP_ROOT=/opt/app-root \
 
 WORKDIR ${HOME}
 
-RUN rpm-file-permissions && \
-  useradd -u 1001 -r -g 0 -d ${HOME} -s /sbin/nologin \
+RUN  useradd -u 1001 -r -g 0 -d ${HOME} -s /sbin/nologin \
       -c "Default Application User" default && \
   chown -R 1001:0 ${APP_ROOT}
 
