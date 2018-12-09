@@ -4,6 +4,8 @@ ENV APP_ROOT=/opt/app-root \
     HOME=${APP_ROOT}/src \
     PATH=${HOME}/src/bin:/opt/app-root/bin:$PATH 
 
+RUN mkdir -p ${HOME}
+
 WORKDIR ${HOME}
 
 RUN  useradd -u 1001 -r -g 0 -d ${HOME} -s /sbin/nologin \
