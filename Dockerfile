@@ -17,6 +17,8 @@ RUN  useradd -u 1001 -r -g 0 -d ${HOME} -s /sbin/nologin \
       -c "Default Application User" default && \
   chown -R 1001:0 $APP_ROOT
 
+USER 1001
+
 COPY package.json .
 COPY public ./public
 COPY src ./src
