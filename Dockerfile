@@ -14,6 +14,7 @@ COPY src ./src
 RUN ls -l
 
 RUN npm install
+RUN npm install serve --save
 RUN ls -l
 
 RUN npm run build 
@@ -27,7 +28,6 @@ RUN ls -l /opt
 RUN ls -l ${APP_ROOT}
 RUN ls -l ${HOME}
 
-RUN npm install serve
 
 USER 1001
 
