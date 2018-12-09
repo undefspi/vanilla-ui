@@ -1,8 +1,8 @@
 FROM node:8
 
-ENV APP_ROOT=/opt/app-root \
-    HOME=${APP_ROOT}/src \
-    PATH=${HOME}/bin:/opt/app-root/bin:$PATH 
+ENV APP_ROOT=/opt/app-root 
+ENV HOME=${APP_ROOT}/src
+ENV PATH=${HOME}/bin:/opt/app-root/bin:$PATH 
 
 RUN echo ${APP_ROOT}
 
