@@ -14,7 +14,6 @@ COPY src ./src
 RUN ls -l
 
 RUN npm install
-RUN npm install serve --save
 RUN ls -l
 
 RUN npm run build 
@@ -30,5 +29,5 @@ RUN ls -l ${HOME}
 
 
 USER 1001
-
-CMD ["serve","-s","./build"]
+RUN npm install -g serve
+CMD ["serve","-s","build"]
