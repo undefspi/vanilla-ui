@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^1.4.3",
     "@material-ui/icons": "^2.0.1",
+    "mkdirp": "^0.5.1",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-hotkeys": "^1.1.4",
@@ -17,7 +18,7 @@
     "typeface-roboto": "0.0.54"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "mkdirp bable-cache && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"

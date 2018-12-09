@@ -31,5 +31,3 @@ USER 1001
 
 #RUN npm install -g serve
 CMD ["npm", "start"]
-
-RUN cat "check write" >> checkfile.txt
