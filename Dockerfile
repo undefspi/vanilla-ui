@@ -1,6 +1,15 @@
 FROM node:8
 
-WORKDIR /home/nodejs/app
+ENV APP_ROOT=/opt/app-root \
+    HOME=${APP_ROOT}/src \
+    PATH=${HOME}/src/bin:/opt/app-root/bin:$PATH 
+
+WORKDIR ${HOME}
+
+RUN rpm-file-permissions && \
+  useradd -u 1001 -r -g 0 -d ${HOME} -s /sbin/nologin \
+      -c "Default Application User" default && \
+  chown -R 1001:0 ${APP_ROOT}
 
 COPY package.json .
 COPY public ./public
