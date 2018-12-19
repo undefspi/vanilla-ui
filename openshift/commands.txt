@@ -1,0 +1,2 @@
+oc new-build --strategy docker --binary  --name nodejs-agent
+oc start-build nodejs-agent --from-dir ./agent-nodejs-8 --follow
